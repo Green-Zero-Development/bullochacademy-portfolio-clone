@@ -1,4 +1,4 @@
-# Designed and developed by me using [11ty (Frontend)](https://www.11ty.dev/) and [Wordpress (Backend)](https://wordpress.com/).
+# Developed by me using [11ty (Frontend)](https://www.11ty.dev/) and [Wordpress (Backend)](https://wordpress.com/).
 
 **Features**
 - Multiple calendars hydrated by data from the Wordpress API.
