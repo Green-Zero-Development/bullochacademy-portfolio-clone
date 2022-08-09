@@ -1,0 +1,138 @@
+@import './_includes/css/utilities.scss';
+
+.inner-page-sidebar {
+    min-width: 280px;
+    max-width: 300px;
+    border-top: 1px solid #B0A96F;
+}
+
+.sidebar-item {
+    cursor: pointer;
+}
+
+.sidebar-top-parent {
+    color: #124734;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 20px;
+    border-top: 1px solid #B0A96F;
+    border-bottom: 1px solid #B0A96F;
+    transition: .25s;
+}
+
+.sidebar-top-parent-text:hover {
+    color: #218461;
+    transition: .25s;
+}
+
+.post-meta {
+    color: #124734;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border-top: 1px solid #B0A96F;
+    border-bottom: 1px solid #B0A96F;
+    transition: .25s;
+}
+
+.sidebar-icon {
+    
+}
+
+.sidebar-first-level-links {
+    font-size: 14px;
+    font-weight: bold;
+    border-left: 8px solid #D4D0B1;
+    letter-spacing: 0.5px;
+    max-height: auto;
+    transition: margin-top 0.15s linear;
+}
+.hide-sidebar-menu {
+    max-height: 0px;
+    padding: 0px;
+    margin: 0px;
+    pointer-events: none;
+    opacity: 0;
+    transition: margin-top 0.15s linear;
+}
+
+.faculty-trig {
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .25s;
+}
+
+.faculty-trig:hover {
+    color: #218461;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.active-faculty-trig {
+    border-bottom: 1px solid #B0A96F;
+    margin-bottom: -1px;
+}
+
+.hall-of-fame-trig {
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .25s;
+}
+
+.hall-of-fame-trig:hover {
+    color: #218461;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.active-hall-of-fame-trig {
+    border-bottom: 1px solid #B0A96F;
+    margin-bottom: -1px;
+}
+
+.pre-footer-transparent-text {
+    background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/Mask-Group.png');
+    background-size: 780px;
+}
+
+.child-page-square {
+    width: 260px;
+    border-radius: 6px;
+    transition: .25s;
+}
+
+.post-next-prev {
+    border-top: 2px solid #B0A96F;
+    border-bottom: 2px solid #B0A96F;
+}
+
+@media (min-width: $xs) {
+
+}
+
+@media (min-width: $sm) {
+
+}
+
+@media (min-width: $md) {
+
+}
+
+@media (min-width: $lg) {
+
+}
+
+@media (min-width: $xl) {
+
+}
+
+@media (min-width: $xxl) {
+
+}
+
+@media (min-width: $xxxl) {
+
+}

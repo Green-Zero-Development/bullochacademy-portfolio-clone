@@ -1,0 +1,53 @@
+---
+layout: base.njk
+pagination:
+    data: wpages
+    size: 1
+    alias: wpage
+eleventyComputed:
+  yoastHead: "{{ wpage.yoast|safe }}"
+permalink: /{{ wpage.link | replace("https://www.bullochacademy.com/", "") | replace("http://localhost:8080/", "")}}index.html
+---
+{%- for item in pagination.items %}
+    {% if item.template == "templates/thank-you.php" %}
+        {% include "pages/thank-you.njk" %}
+    {% elseif item.template == "templates/information-page.php" %}
+        {% include "pages/information-page.njk" %}
+    {% elseif item.template == "templates/admissions.php" %}
+        {% include "pages/admissions.njk" %}
+    {% elseif item.template == "templates/academics.php" %}
+        {% include "pages/academics.njk" %}
+    {% elseif item.template == "templates/athletics.php" %}
+        {% include "pages/athletics.njk" %}
+    {% elseif item.template == "templates/about.php" %}
+        {% include "pages/about.njk" %}
+    {% elseif item.template == "templates/contact.php" %}
+        {% include "pages/contact.njk" %}
+    {% elseif item.template == "templates/parents.php" %}
+        {% include "pages/parents.njk" %}
+    {% elseif item.template == "templates/students.php" %}
+        {% include "pages/students.njk" %}
+    {% elseif item.template == "templates/careers-list.php" %}
+        {% include "pages/careers-list.njk" %}
+    {% elseif item.template == "templates/schedule-tour.php" %}
+        {% include "pages/schedule-tour.njk" %}
+    {% elseif item.template == "templates/apply-for-career.php" %}
+        {% include "pages/apply-for-career.njk" %}
+    {% elseif item.template == "templates/pta.php" %}
+        {% include "pages/pta.njk" %}
+    {% elseif item.template == "templates/giving.php" %}
+        {% include "pages/giving.njk" %}
+    {% elseif item.template == "templates/school-news.php" %}
+        {% include "pages/school-news.njk" %}
+    {% elseif item.template == "templates/alumni.php" %}
+        {% include "pages/alumni.njk" %}
+    {% elseif item.template == "templates/school-news-calendar.php" %}
+        {% include "pages/school-news-calendar.njk" %}
+    {% elseif item.template == "templates/master-athletics-calendar.php" %}
+        {% include "pages/master-athletics-calendar.njk" %}
+    {% elseif item.template == "templates/faculty-and-staff.php" %}
+        {% include "pages/faculty-and-staff.njk" %}
+    {% elseif item.template == "templates/policy-page.php" %}
+        {% include "pages/policy-page.njk" %}
+    {% endif %}
+{% endfor -%}

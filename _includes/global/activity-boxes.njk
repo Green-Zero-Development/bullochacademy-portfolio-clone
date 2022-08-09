@@ -1,0 +1,22 @@
+<style>
+
+</style>
+
+<div class="flex flex-wrap">
+{% for item2 in item.sectionContent %}
+    <style>
+        .activity-box-img-default {
+            background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/activity-box-default.png');
+        }
+        {% if item2.image %}
+        .activity-box-img-{{ item2.image.ID }} {
+            background-image: url('{{ item2.image.url }}') !important;
+        }
+        {% endif %}
+    </style>
+    <a href="{{ item2.link }}" class="relative bg-cover bg-center mb-4 mx-2 activity-box activity-box-img-default {% if item2.image %}activity-box-img-{{ item2.image.ID }}{% endif %}">
+        <div class="absolute top-0 left-0 w-full h-full z-10 activity-box-gradient"></div>
+        <h6 class="absolute bottom-0 text-xl text-white mb-4 mx-4 z-50">{{ item2.title }}</h6>
+    </a>
+{% endfor %}
+</div>

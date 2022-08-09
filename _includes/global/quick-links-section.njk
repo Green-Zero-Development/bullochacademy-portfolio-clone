@@ -1,0 +1,16 @@
+<style>
+    
+</style>
+
+<div class="md:flex items-center max-w-8xl mx-auto px-4 sm:px-8 md:px-16">
+    <h3 class="text-2xl mb-6 md:mb-0 py-2 pr-6 leading-none quick-links-title">Quick Links</h3>
+    <div class="flex flex-wrap">
+        {% for item in quickLinks %}
+            <div class="md:pl-8">
+                <a {% if item.typeOfLink == "Links to a page on this site" %}href='{{ item.link }}'{% elseif item.typeOfLink == "Links to another site" %}href='{{ item.offsiteLink }}' target='_blank'{% else %}href='{{ item.fileLink }}' target='_blank'{% endif %}>
+                    <div class="text-sm font-bold uppercase py-2 quick-link {% if loop.last !== true %}pr-12 md:pr-6{% endif %}">{{ item.text }}</div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

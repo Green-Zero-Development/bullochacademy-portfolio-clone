@@ -1,0 +1,232 @@
+{% set pageSections = [] %}
+{% for item in wpage.pageSections %}
+    {% set pageSections = (pageSections.push({typeOfSection: item.acf_fc_layout, sectionContent: item.section_content, weight:  loop.index}), pageSections) %}
+{% endfor %}
+
+<style>
+    
+</style>
+
+{% include "global/top-hero-section.njk" %}
+
+{% if wpage.underHeroContentSwitch == 'No' %}
+    <div class="flex flex-col-reverse md:flex-row max-w-6xl mx-auto md:pb-24 px-5 sm:px-8 md:px-4 lg:px-12">
+        <ul id="inner-page-sidebar" class="hidden md:block mr-12 inner-page-sidebar">
+            {% for item in menus.mainMenu %}
+            <li id="sidebar-top-parent" class="flex flex-wrap items-center justify-between {% if item.children|length %}py-3{% endif %} px-6 sidebar-top-parent sidebar-item">
+                <a href="{{ item.url }}" class="{% if item.children|length == 0 %}w-full py-3{% endif %} sidebar-top-parent-text">{{ item.title }}</a>
+                {% if item.children|length %}
+                <img id="sidebar-icon" status="closed" src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_plus.png" class="pointer-events-none sidebar-icon" />
+                {% endif %}
+            </li>
+            <ul class="w-full list-none my-3 mx-6 px-2 sidebar-first-level-links">
+                {% for item1 in item.children %}
+                {% if item1.children|length %}
+                    <ul class="list-none">
+                        <li class="pb-2">
+                            <a href="{{ item1.url }}" class="mb-2">{{ item1.title | safe }}</a>
+                        </li>
+                        {% for item2 in item1.children %}
+                            <a class="" href="{{ item2.url }}">
+                                <li class="pb-2"><img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_subpagearrow.png" class="px-1 inline" />{{ item2.title | safe }}</li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                <a class="" href="{{ item1.url }}">
+                    <li class="{% if loop.last !== true %}pb-2{% endif %}">{{ item1.title | safe }}</li>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </ul>
+        <div class="w-full pb-12 wysiwig-block">
+            {{ wpage.pageContent | safe }}
+            {% for item in pageSections | sortBy('weight') %}
+                {% if item.typeOfSection == "activity_boxes" %}
+                    {% include "global/activity-boxes.njk" %}
+                {% endif %}
+            {% endfor %}
+            {% if wpage.slug == "teams-programs" %}
+            <div class="flex flex-wrap">
+                <div class="w-1/2 sm:w-1/3">
+                    <h5 class="pb-2">Fall</h5>
+                    <ul class="list-inside">
+                        {% for item in sports %}
+                            {% if item.disabled !== 'Yes' %}
+                                {% for item2 in item.sportSeasons %}
+                                    {% if item2==='Fall' %}
+                                        <a href="/athletics/{{ item.slug }}">
+                                            <li>{{ item.title | safe }}</li>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="w-1/2 sm:w-1/3">
+                    <h5 class="pb-2">Winter</h5>
+                    <ul class="list-inside">
+                        {% for item in sports %}
+                            {% if item.disabled !== 'Yes' %}
+                                {% for item2 in item.sportSeasons %}
+                                    {% if item2==='Winter' %}
+                                        <a href="/athletics/{{ item.slug }}">
+                                            <li>{{ item.title | safe }}</li>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="w-1/2 sm:w-1/3">
+                    <h5 class="pb-2">Spring</h5>
+                    <ul class="list-inside">
+                        {% for item in sports %}
+                            {% if item.disabled !== 'Yes' %}
+                                {% for item2 in item.sportSeasons %}
+                                    {% if item2==='Spring' %}
+                                        <a href="/athletics/{{ item.slug }}">
+                                            <li>{{ item.title | safe }}</li>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            {% if wpage.slug == "board-of-trustees" %}
+                <div class="flex flex-wrap">
+                    {% for item in boardOfTrustees %}
+                        {% if item.disabled !== 'Yes' %}
+                            <div class="w-full text-center md:text-left">
+                                <h4 class="text-3xl">Board of Trustees</h4>
+                                <h6 class="text-base text-green-200">{{ item.title }}</h6>
+                            </div>
+                            <div class="flex flex-wrap w-full max-w-8xl mx-auto pt-8">
+                                <div class="flex w-full sm:w-1/2 mx-auto pb-8 text-center md:text-left">
+                                    <div class="xl:w-8 border-t-2 border-gold-500 mt-3"></div>
+                                    <div class="w-full xl:w-auto xl:ml-6">
+                                        <h5 class="text-green-200 ">Chairman</h5>
+                                        <h6 class="text-2xl py-2">{{ item.members.chairman }}</h6>
+                                    </div>
+                                </div>
+                                <div class="flex w-full sm:w-1/2 mx-auto pb-8 text-center md:text-left">
+                                    <div class="xl:w-8 border-t-2 border-gold-500 mt-3"></div>
+                                    <div class="w-full xl:w-auto xl:ml-6">
+                                        <h5 class="text-green-200 ">Vice Chairman</h5>
+                                        <h6 class="text-2xl py-2">{{ item.members.vice_chairman }}</h6>
+                                    </div>
+                                </div>
+                                <div class="flex w-full sm:w-1/2 mx-auto pb-8 text-center md:text-left">
+                                    <div class="xl:w-8 border-t-2 border-gold-500 mt-3"></div>
+                                    <div class="w-full xl:w-auto xl:ml-6">
+                                        <h5 class="text-green-200 ">Treasurer</h5>
+                                        <h6 class="text-2xl py-2">{{ item.members.treasurer }}</h6>
+                                    </div>
+                                </div>
+                                <div class="flex w-full sm:w-1/2 mx-auto pb-8 text-center md:text-left">
+                                    <div class="xl:w-8 border-t-2 border-gold-500 mt-3"></div>
+                                    <div class="w-full xl:w-auto xl:ml-6">
+                                        <h5 class="text-green-200 ">Secretary</h5>
+                                        <h6 class="text-2xl py-2">{{ item.members.secretary }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex max-w-8xl w-full mx-auto mx-auto pb-8 text-center md:text-left">
+                                <div class="xl:w-8 border-t-2 border-gold-500 mt-3"></div>
+                                <div class="w-full xl:w-11/12 mx-auto xl:mx-0 xl:ml-6">
+                                    <h5 class="text-green-200 ">Members-At-Large</h5>
+                                    <h6 class="max-w-3xl xl:max-w-8xl text-2xl mx-auto xl:mx-0 py-2 leading-normal">{% for item2 in item.members.members_at_large %}{{ item2.name }}, {% endfor %}</h6>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}
+
+{% include "global/pre-footer-cta.njk" %}
+
+<script>
+if (document.getElementById('inner-page-sidebar') !== null ) {
+    let sideBar = document.getElementById('inner-page-sidebar');
+    let sideBarToggleItems = document.querySelectorAll('.sidebar-first-level-links');
+    for (var i = 0; i < sideBarToggleItems.length; i++) {
+        sideBarToggleItems[i].classList.add('hide-sidebar-menu');
+    }
+    if (window.location.pathname.includes('admissions') == true) {
+        sideBarToggleItems[0].classList.remove('hide-sidebar-menu');
+        sideBarToggleItems[0].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+        sideBarToggleItems[0].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    } else if (window.location.pathname.includes('academics') == true) {
+        sideBarToggleItems[1].classList.remove('hide-sidebar-menu');
+        sideBarToggleItems[1].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+        sideBarToggleItems[1].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    } else if (window.location.pathname.includes('athletics') == true) {
+        sideBarToggleItems[2].classList.remove('hide-sidebar-menu');
+        sideBarToggleItems[2].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+        sideBarToggleItems[2].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    } else if (window.location.pathname.includes('about') == true) {
+        sideBarToggleItems[3].classList.remove('hide-sidebar-menu');
+        sideBarToggleItems[3].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+        sideBarToggleItems[3].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    } else if (window.location.pathname.includes('giving') == true) {
+        sideBarToggleItems[5].classList.remove('hide-sidebar-menu');
+        sideBarToggleItems[5].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+        sideBarToggleItems[5].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    } else {
+        sideBarToggleItems[0].classList.remove('hide-sidebar-menu');
+        sideBarToggleItems[0].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+        sideBarToggleItems[0].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    }
+    let sidebarItems = document.querySelectorAll('.sidebar-item');
+    for (var i = 0; i < sidebarItems.length; i++) {
+        sidebarItems[i].addEventListener("click", function(e){ 
+            var sideMenuIcon = e.target.querySelector('.sidebar-icon');
+            if (sideMenuIcon.getAttribute('status') == 'closed' ) {
+                sideMenuIcon.src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+                sideMenuIcon.setAttribute('status', 'open');
+            } else {
+                sideMenuIcon.src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_plus.png';
+                sideMenuIcon.setAttribute('status', 'closed');
+            }
+            e.target.nextElementSibling.classList.toggle('hide-sidebar-menu');
+        });
+    }
+}
+
+let wysiwigAnchorHeadings = document.querySelectorAll('h4');
+for (var i = 0; i < wysiwigAnchorHeadings.length; i++) {
+    wysiwigAnchorHeadings[i].classList.add('anchor-h4');
+    var headerAnchor = document.createElement('a');
+    var headerAnchorCopyNotif = document.createElement('div');
+    headerAnchor.setAttribute("id", wysiwigAnchorHeadings[i].innerText);
+    headerAnchorCopyNotif.setAttribute("id", 'anchor-copied');
+    headerAnchor.setAttribute("class", 'anchor-link');
+    headerAnchorCopyNotif.setAttribute("class", 'h-0 opacity-0 anchor-copied');
+    headerAnchorCopyNotif.innerText = 'anchor link copied';
+    wysiwigAnchorHeadings[i].parentNode.insertBefore(headerAnchor, wysiwigAnchorHeadings[i])
+    wysiwigAnchorHeadings[i].parentNode.insertBefore(headerAnchorCopyNotif, wysiwigAnchorHeadings[i])
+}
+for (var i = 0; i < wysiwigAnchorHeadings.length; i++) {
+    wysiwigAnchorHeadings[i].addEventListener("click", function(e){
+        let anchorLinkNotifs = document.querySelectorAll('.anchor-copied');
+        for (var i2 = 0; i2 < anchorLinkNotifs.length; i2++) {
+            anchorLinkNotifs[i2].classList.add('opacity-0');
+            anchorLinkNotifs[i2].classList.remove('anchor-copied-active');
+        }
+        e.target.previousElementSibling.classList.remove('opacity-0');
+        e.target.previousElementSibling.classList.add('anchor-copied-active');
+        navigator.clipboard.writeText('{{ wpage.link }}#' + e.target.innerText);
+    });
+}
+
+</script>

@@ -1,0 +1,19 @@
+<style>
+    .gator-cta-text-bk {
+        background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/Mask-Group.png');
+    }
+</style>
+
+<div class="relative bg-gold-50 gator-cta">
+    <div class="w-full h-full bg-cover xxxl:bg-contain bg-center bg-no-repeat py-20 px-2 sm:px-6 md:px-10 lg:px-16 gator-cta-text-bk">
+        <div class="">
+            <div class="text-center px-6">
+                <h2 class="text-3xl lg:text-h2-init pb-2 leading-none">{{ globalSections.gatorTextCta.title }}</h2>
+                <p class="max-w-3xl text-base lg:text-p-init mx-auto pb-6">{{ globalSections.gatorTextCta.paragraph }}</p>
+                <a {% if globalSections.gatorTextCta.button.link_to_where == "A page on this site" %}href='{{ globalSections.gatorTextCta.button.link }}'{% elseif globalSections.gatorTextCta.button.link_to_where == "Another site" %}href='{{ globalSections.gatorTextCta.button.link_offsite }}' target='_blank'{% endif %}>
+                    <button class="green-button">{{ globalSections.gatorTextCta.button.text }}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

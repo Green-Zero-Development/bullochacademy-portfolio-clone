@@ -1,0 +1,17 @@
+<div class="relative bg-gold-50">
+    <div class="w-full h-full bg-center lg:bg-right bg-no-repeat py-8 pre-footer-transparent-text">
+        <div class="lg:flex flex-wrap items-center justify-between max-w-8xl text-center lg:text-left mx-auto px-4 xl:px-12">
+            <div class="">
+                <h5 class="text-4xl md:text-h1-init leading-none">{{ globalSections.preFooterCta.title }}</h5>
+            </div>
+            <div class="flex justify-evenly lg:justify-right pt-10 lg:pt-0">
+                {% for item in globalSections.preFooterCta.icons %}
+                    <a {% if item.link_to_where == "A page on this site" %}href='{{ item.link }}'{% elseif item.link_to_where == "Another site" %}href='{{ item.link_offsite }}' target='_blank'{% endif %} class="text-center {% if loop.last !== true %}mr-12{% endif %}">
+                        <img src="{{ item.icon_image.url }}" class="bg-green-500 rounded-full p-3 green-circle-icon" />
+                        <h6>{{ item.title }}</h6>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

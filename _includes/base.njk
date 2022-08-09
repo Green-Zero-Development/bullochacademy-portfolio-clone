@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  {% include "./head/all.njk" %}
+    <style>
+      {% include "assets/css/main.css" %}
+    </style>
+    {% include "header.njk" %}
+  <body>
+    {% for item in global.siteTrackingCode[0].acf.value_list %}{% if item.type == "Google Analytics No Script" %}{{ item.value | safe }}{% endif %}{% endfor %}
+    <main>
+      {{ content | safe }}
+    </main>
+    {% include "footer.njk" %}
+    <script src="/assets/js/main.js"></script>
+    <script>
+      function openModal() {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      function closeModal() {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    </script>
+  </body>
+</html>

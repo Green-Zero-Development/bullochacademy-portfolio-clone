@@ -1,0 +1,94 @@
+@import './_includes/css/utilities.scss';
+
+.close-menu-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.18px;
+    transform: translateY(56px);
+    transition: .25s;
+    z-index: 999;
+}
+
+.active-close-menu-button {
+    transform: translateY(0px);
+    transition: .25s;
+}
+
+.footer-menu {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.18px;
+    text-transform: uppercase;
+}
+
+.footer-menu-alt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.18px;
+    text-transform: uppercase;
+}
+
+.footer_top-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.18px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #C2BD90;
+    margin-bottom: -1px;
+}
+
+.footer-quick-link {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.18px;
+}
+
+.footer-contact-info {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.18px;
+    font-style: normal;
+}
+
+.post-footer {
+    border-top: 1px solid #175B43;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.18px;
+    text-transform: uppercase;
+}
+
+@media (min-width: $xs) {
+
+}
+
+@media (min-width: $sm) {
+
+}
+
+@media (min-width: $md) {
+
+}
+
+@media (min-width: $lg) {
+
+}
+
+@media (min-width: $xl) {
+
+}
+
+@media (min-width: $xxl) {
+
+}
+
+@media (min-width: $xxxl) {
+
+}

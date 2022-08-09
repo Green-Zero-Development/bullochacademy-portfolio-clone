@@ -1,0 +1,149 @@
+---
+layout: base.njk
+---
+
+{% set pageSections = [] %}
+{% for item in sportsSing.pageSections %}
+    {% set pageSections = (pageSections.push({typeOfSection: item.acf_fc_layout, sectionContent: item.section_content, weight:  loop.index}), pageSections) %}
+{% endfor %}
+
+<style>
+    .inner-page-sidebar {
+        min-width: 280px;
+        max-width: 300px;
+        border-top: 1px solid #B0A96F;
+    }
+    .sidebar-item {
+        cursor: pointer;
+    }
+    .sidebar-top-parent {
+        color: #124734;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 20px;
+        border-top: 1px solid #B0A96F;
+        border-bottom: 1px solid #B0A96F;
+        transition: .25s;
+    }
+    .sidebar-top-parent-text:hover {
+        color: #218461;
+        transition: .25s;
+    }
+    .sidebar-icon {
+        
+    }
+    .sidebar-first-level-links {
+        font-size: 14px;
+        font-weight: bold;
+        border-left: 8px solid #D4D0B1;
+        letter-spacing: 0.5px;
+        max-height: auto;
+        transition: margin-top 0.15s linear;
+    }
+    .hide-sidebar-menu {
+        max-height: 0px;
+        padding: 0px;
+        margin: 0px;
+        pointer-events: none;
+        opacity: 0;
+        transition: margin-top 0.15s linear;
+    }
+</style>
+
+{% include "global/top-hero-section.njk" %}
+
+{% if sportsSing.underHeroContentSwitch == 'No' %}
+    <div class="flex flex-col-reverse md:flex-row max-w-6xl mx-auto md:pb-24 px-5 sm:px-8 md:px-4 lg:px-12">
+        <ul id="inner-page-sidebar" class="hidden md:block mr-12 inner-page-sidebar">
+            {% for item in menus.mainMenu %}
+            <li id="sidebar-top-parent" class="flex flex-wrap items-center justify-between {% if item.children|length %}py-3{% endif %} px-6 sidebar-top-parent sidebar-item">
+                <a href="{{ item.url }}" class="{% if item.children|length == 0 %}w-full py-3{% endif %} sidebar-top-parent-text">{{ item.title }}</a>
+                {% if item.children|length %}
+                <img id="sidebar-icon" status="closed" src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_plus.png" class="pointer-events-none sidebar-icon" />
+                {% endif %}
+            </li>
+            <ul class="w-full list-none my-3 mx-6 px-2 sidebar-first-level-links">
+                {% for item1 in item.children %}
+                {% if item1.children|length %}
+                    <ul class="list-none">
+                        <li class="pb-2">
+                            <a href="{{ item1.url }}" class="mb-2">{{ item1.title | safe }}</a>
+                        </li>
+                        {% for item2 in item1.children %}
+                            <a class="" href="{{ item2.url }}">
+                                <li class="pb-2"><img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_subpagearrow.png" class="px-1 inline" />{{ item2.title | safe }}</li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                <a class="" href="{{ item1.url }}">
+                    <li class="{% if loop.last !== true %}pb-2{% endif %}">{{ item1.title | safe }}</li>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </ul>
+        <div class="w-full pb-12 wysiwig-block">
+            {{ sportsSing.pageContent.rendered | safe }}
+        </div>
+    </div>
+{% endif %}
+
+{% include "global/single-sport-calendar-section.njk" %}
+
+<script>
+if (document.getElementById('inner-page-sidebar') !== null ) {
+    let sideBar = document.getElementById('inner-page-sidebar');
+    let sideBarToggleItems = document.querySelectorAll('.sidebar-first-level-links');
+    for (var i = 0; i < sideBarToggleItems.length; i++) {
+        sideBarToggleItems[i].classList.add('hide-sidebar-menu');
+    }
+    sideBarToggleItems[2].classList.remove('hide-sidebar-menu');
+    sideBarToggleItems[2].previousElementSibling.querySelector('#sidebar-icon').setAttribute('status', 'open');
+    sideBarToggleItems[2].previousElementSibling.querySelector('#sidebar-icon').src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+    let sidebarItems = document.querySelectorAll('.sidebar-item');
+    for (var i = 0; i < sidebarItems.length; i++) {
+        sidebarItems[i].addEventListener("click", function(e){ 
+            var sideMenuIcon = e.target.querySelector('.sidebar-icon');
+            console.log(sideMenuIcon);
+            if (sideMenuIcon.getAttribute('status') == 'closed' ) {
+                sideMenuIcon.src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_minus.png';
+                sideMenuIcon.setAttribute('status', 'open');
+            } else {
+                sideMenuIcon.src = 'https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_plus.png';
+                sideMenuIcon.setAttribute('status', 'closed');
+            }
+            e.target.nextElementSibling.classList.toggle('hide-sidebar-menu');
+        });
+    }
+}
+
+let wysiwigSection = document.getElementById('wysiwig-block');
+let wysiwigAnchorHeadings = wysiwigSection.querySelectorAll('h4');
+for (var i = 0; i < wysiwigAnchorHeadings.length; i++) {
+    wysiwigAnchorHeadings[i].classList.add('anchor-h4');
+    var headerAnchor = document.createElement('a');
+    var headerAnchorCopyNotif = document.createElement('div');
+    headerAnchor.setAttribute("id", wysiwigAnchorHeadings[i].innerText);
+    headerAnchorCopyNotif.setAttribute("id", 'anchor-copied');
+    headerAnchor.setAttribute("class", 'anchor-link');
+    headerAnchorCopyNotif.setAttribute("class", 'h-0 opacity-0 pointer-events-none anchor-copied');
+    headerAnchorCopyNotif.innerText = 'anchor link copied';
+    wysiwigAnchorHeadings[i].parentNode.insertBefore(headerAnchor, wysiwigAnchorHeadings[i])
+    wysiwigAnchorHeadings[i].parentNode.insertBefore(headerAnchorCopyNotif, wysiwigAnchorHeadings[i])
+}
+for (var i = 0; i < wysiwigAnchorHeadings.length; i++) {
+    wysiwigAnchorHeadings[i].addEventListener("click", function(e){
+        let anchorLinkNotifs = document.querySelectorAll('.anchor-copied');
+        for (var i2 = 0; i2 < anchorLinkNotifs.length; i2++) {
+            anchorLinkNotifs[i2].classList.add('opacity-0');
+            anchorLinkNotifs[i2].classList.remove('anchor-copied-active');
+        }
+        e.target.previousElementSibling.classList.remove('opacity-0');
+        e.target.previousElementSibling.classList.add('anchor-copied-active');
+        navigator.clipboard.writeText('{{ wpage.link }}#' + e.target.innerText);
+    });
+}
+</script>

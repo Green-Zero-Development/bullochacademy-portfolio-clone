@@ -1,0 +1,60 @@
+---
+layout: base.njk
+---
+<div class="relative flex flex-wrap max-w-8xl mx-auto">
+    <style>
+        .desktop-hero-img {
+            background-image: url('{{ newsSing.featImg }}');
+            width: 93%;
+            height: 330px;
+            border-radius: 6px;
+        }
+
+        .mobile-hero-img {
+            background-image: url('{{ newsSing.featImg }}');
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+    <div class="lg:hidden w-full bg-cover bg-center mobile-hero-img">
+
+    </div>
+    <div class="w-full pl-4 lg:pl-12 pr-4 lg:pr-0">
+        <div id="hero-title-box" class="mt-8 mb-6">
+            <h6 class="text-sm text-green-200 uppercase tracking-widest"><span><a href="/school-news/" class="hover:text-green-50">School News & Updates</a></span> > {{ newsSing.title | safe }}</h6>
+            <h1 class="text-4xl md:text-h1-init leading-none">{{ newsSing.title | safe }}</h1>
+        </div>
+        <div class="hidden lg:flex w-full bg-cover bg-center z-50 desktop-hero-img">
+
+        </div>
+    </div>
+</div>
+
+<div class="flex flex-wrap md:flex-nowrap max-w-6xl mx-auto py-12 px-5 sm:px-8 md:px-4 lg:px-12">
+    <ul class="mr-12 inner-page-sidebar">
+        <div class="flex flex-wrap items-center justify-between py-3 px-6 mb-12 post-meta">
+            By Bulloch Academy<br />
+            Posted on: {{ newsSing.formatedDate }}
+        </div>
+    </ul>
+    <div class="w-full pb-12 wysiwig-block">
+        {{ newsSing.content | safe }}
+    </div>
+</div>
+
+<div class="flex max-w-8xl mx-auto mb-12">
+    <div class="flex justify-between pt-12 pb-24 w-full mx-4 lg:mx-12 px-4 lg:px-12 post-next-prev">
+        {% if newsSing.prev %}
+        <a href="/school-news/{{ newsSing.prev }}" class="font-bold">
+            Previous Article
+        </a>
+        {% endif %}
+        {% if newsSing.next %}
+        <a href="/school-news/{{ newsSing.next }}" class="font-bold ml-auto">
+            Next Article
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+{% include "global/pre-footer-cta.njk" %}

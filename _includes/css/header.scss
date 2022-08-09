@@ -1,0 +1,260 @@
+@import './_includes/css/utilities.scss';
+
+.header-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -42px;
+  align-items: center;
+  z-index: 999;
+  transition: .3s;
+}
+  
+.header-container.isSticky {
+  transition: .3s;
+}
+
+.header-container.isSticky .desktop-menu {
+  transition: .3s;
+}
+
+.topbar-menu-item {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18px;
+  text-transform: uppercase;
+}
+
+.topbar-menu-item:hover {
+  border-bottom: 1px solid #1C7052;
+  color: #1C7052;
+  margin-bottom: -1px;
+}
+
+.topbar-menu-hover {
+  font-family: 'Poppins', sans-serif;
+  top: 42px;
+  width: 200px;
+  pointer-events: none;
+  transform: translateY(-2px);
+  z-index: 999;
+}
+
+.topbar-menu-hover-list {
+  background-color: #DCD6A9;
+  color: #124734;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+}
+
+.active-topbar-menu-hover .topbar-menu-hover-list {
+  width: 90%;
+  height: auto;
+}
+
+.active-topbar-menu-hover {
+  visibility: visible;
+  pointer-events: initial;
+  opacity: 1;
+  transform: translateY(0px);
+  transition: .25s;
+}
+
+.site-logo {
+  height: 70px;
+}
+
+.site-mobile-logo {
+  height: 70px;
+}
+
+.desktop-menu-item {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18px;
+}
+
+.desktop-menu-item:hover {
+  border-bottom: 1px solid #C2BD90;
+  margin-bottom: -1px;
+}
+
+.active-desktop-menu-item {
+  color: #C2BD90;
+  border-bottom: 1px solid #C2BD90;
+  margin-bottom: -1px;
+}
+
+.desktop-menu-hover {
+  margin-top: 144px;
+  color: white !important;
+}
+
+.active-desktop-menu {
+  visibility: visible;
+}
+
+.desktop-menu-subitem {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #C2BD90;
+}
+
+.desktop-menu-subitem-with-children {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.18px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #C2BD90;
+}
+
+.desktop-menu-subitem-with-children:hover {
+  color: #B9B37F;
+  cursor: default;
+}
+
+.desktop-menu-subitem:hover {
+  color: #B9B37F;
+}
+
+.desktop-menu-subsubitem:hover {
+  color: #B9B37F;
+}
+
+.mobile-menu-icon {
+  width: 60px;
+  padding-bottom: 30px;
+  z-index: 999999999999;
+}
+
+.mobile-menu-close {
+  background-color: rgba(11, 20, 30, 0.5);
+}
+
+.mobile-menu-single {
+  border-bottom: 2px solid #C2BD90;
+}
+
+.mobile-icon-active {
+  transform: rotate(180deg);
+  color:#C2BD90;
+}
+
+.mobile-menu {
+  border-radius: 12px;
+  z-index: 998;
+}
+
+.mobile-menu-collaspe {
+  visibility: hidden;
+}
+
+.mobile-items {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.18px;
+  text-transform: uppercase;
+  transition: .8s;
+  z-index: 998;
+}
+
+.mobile-menu-children {
+  font-weight: 400;
+}
+
+.mobile-items-collaspe {
+  transform: translateY(150%);
+  transition: .8s;
+}
+
+.mobile-menu-close {
+  transition: .9s;
+  z-index: 998;
+}
+
+.mobile-menu-close-collaspe {
+  transform: translateY(-150%);
+  transition: .9s;
+}
+
+.mobile-menu address {
+  font-weight: 600;
+  font-style: normal;
+  color: white;
+  text-transform: capitalize;
+}
+
+.mobile-tele {
+  font-weight: 600;
+  color: white;
+}
+
+.mobile-hours {
+  font-weight: 600;
+  color: white;
+}
+
+.hover-menu-child-item:hover {
+  font-weight: 700 !important;
+}
+
+.mobile-menu {
+    position: fixed;
+    z-index: 99999;
+}
+
+.header-menu-dropdown {
+  opacity: 0;
+  max-height: 0px;
+  max-width: 0px;
+  position: absolute;
+  min-width: 250px;
+  background-color: white;
+  text-align: left;
+  padding: 0px;
+  margin: 0px -15px 0 -20px;
+  overflow: hidden;
+}
+
+.show-dropdown {
+  opacity: 100 !important;
+  max-height: 500px;
+  max-width: 250px;
+  padding: 0px 0px 0px 0px;
+  transition: max-height 1s, padding-top .8s, padding-bottom .8s;
+}
+
+@media (min-width: $xs) {
+   
+}
+
+@media (min-width: $sm) {
+    
+}
+
+@media (min-width: $md) {
+    
+}
+
+@media (min-width: $lg) {
+  .desktop-menu-item {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: $xl) {
+    
+}
+
+@media (min-width: $xxl) {
+    
+}
+
+@media (min-width: $xxxl) {
+    
+}

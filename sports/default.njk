@@ -1,0 +1,10 @@
+---
+layout: sports-single.njk
+pagination:
+    data: sports
+    size: 1
+    alias: sportsSing
+eleventyComputed:
+  yoastHead: "{{ sportsSing.yoast|safe }}"
+permalink: /athletics/{{ sportsSing.slug }}/index.html
+---

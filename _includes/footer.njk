@@ -1,0 +1,131 @@
+<style>
+
+</style>
+
+<!-- <div id="close-menu-button" class="fixed bottom-0 w-full bg-white text-center py-3 cursor-pointer close-menu-button">
+    Close Menu
+</div> -->
+
+<footer class="flex flex-wrap bg-green-700 pt-5 px-2 sm:px-6 text-white">
+    <a href="/">
+        <img class="md:hidden w-40 mx-auto footer-logo" src="{{ global.siteLogos[0].acf.logo.url }}" />
+    </a>
+    <div class="flex flex-wrap items-start w-full max-w-8xl xxl:justify-evenly mx-auto">
+        <div class="hidden md:block">
+            <a href="/">
+                <img class="p-6 footer-logo" src="{{ global.siteLogos[0].acf.logo.url }}" />
+            </a>
+            <div class="flex justify-evenly">
+                <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/SAIS-logo-final-BLACK-768x549-1.png" class="h-8" />
+                <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/NAIS2.png" class="h-8" />
+                <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/GISA1.png" class="h-8" />
+                <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/NACAC1.png" class="h-8" />
+            </div>
+        </div>
+        <ul class="p-6 list-none footer-menu">
+            {% for item in menus.footerMenu1 %}
+                <a href="{{ item.url }}">
+                    <li class="{% if loop.first !== true %}pt-2{% endif %} pb-1">{{ item.title }}</li>
+                </a>
+                {% if item.children.length %}
+                    {% for item1 in item.children %}
+                        <a href="{{ item1.url }}">
+                            <li class="footer_child-title">{{ item1.title }}</li>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <ul class="p-6 list-none footer-menu">
+            {% for item in menus.footerMenu2 %}
+                <a href="{{ item.url }}">
+                    <li class="{% if loop.first !== true %}pt-2{% endif %} pb-1">{{ item.title }}</li>
+                </a>
+                {% if item.children.length %}
+                    {% for item1 in item.children %}
+                        <a href="{{ item1.url }}">
+                            <li class="footer_child-title">{{ item1.title }}</li>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <ul class="p-6 list-none footer-menu-alt">
+            {% for item in menus.footerMenu3 %}
+                <a href="{{ item.url }}">
+                    <li class="{% if loop.first !== true %}pt-2{% endif %} pb-1">{{ item.title }}</li>
+                </a>
+                {% if item.children.length %}
+                    {% for item1 in item.children %}
+                        <a href="{{ item1.url }}">
+                            <li class="footer_child-title">{{ item1.title }}</li>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="p-6">
+            <h6 class="footer_top-title">Quick Links</h6>
+            <ul class="list-none pt-3">
+                {% for item in quickLinks %}
+                    <a {% if item.typeOfLink == "Links to a page on this site" %}href='{{ item.link }}'{% elseif item.typeOfLink == "Links to another site" %}href='{{ item.offsiteLink }}' target='_blank'{% else %}href='{{ item.fileLink }}' target='_blank'{% endif %}>
+                        <li class="footer-quick-link {% if loop.first !== true %}pt-2{% endif %} pb-1">{{ item.text }}</li>
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="p-6">
+            <h6 class="footer_top-title">Contact Us</h6>
+            <a href="https://goo.gl/maps/7V3FJiNGoEr3k7rE7" target="_blank">
+                <address class="w-full py-3 footer-contact-info">
+                    {% for item in global.siteAddresses[0].acf.value_list %}{% if item.type == 'Main Campus' %}{{ item.street }}
+                    <br />
+                    {{ item.city }}, {{ item.state }} {{ item.zip }}
+                    {% endif %}{% endfor %}
+                </address>
+            </a>
+            <a class="flex w-full footer-contact-info" href='tel:{% for item in global.sitePhone[0].acf.value_list %}{% if item.type == "Primary" %}{{ item.value }}{% endif %}{% endfor %}'>
+                <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_phone.png" />
+                <div class="pt-1 pl-2">{% for item in global.sitePhone[0].acf.value_list %}{% if item.type == "Primary" %}{{ item.value }}{% endif %}{% endfor %}</div>
+            </a>
+            <a class="flex w-full pt-4 footer-contact-info" href="https://goo.gl/maps/dtn4KBqr1t5pxBhbA" target="_blank">
+               <br />
+               <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_map-pin.png" />
+               <div class="pt-1 pl-2">Directions</div>
+            </a>
+        </div>
+        <div class="p-6">
+            <a href="/schedule-a-campus-tour/">
+                <button class="gold-button">Schedule A Visit</button>
+            </a>
+            <div class="flex justify-center pt-6">
+                <a href="{% for item in global.siteSocial[0].acf.value_list %}{% if item.type == 'Instagram' %}{{ item.value }}{% endif %}{% endfor %}" target="_blank" class="pr-8">
+                    <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_instagram.svg" />
+                </a>
+                <a href="{% for item in global.siteSocial[0].acf.value_list %}{% if item.type == 'Facebook' %}{{ item.value }}{% endif %}{% endfor %}" target="_blank" class="">
+                    <img src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/icon_facebook.svg" />
+                </a>
+            </div>
+        </div>
+        <div class="flex flex-wrap items-center w-full justify-between mx-auto mt-12 mx-2 sm:mx-10 py-8 post-footer">
+            <div class="w-full md:w-1/3 pb-8 md:pb-0">
+              <div class="text-center md:text-left">&copy; {{ siteData.siteName }}, <span id="copyright-date"></span>. All Rights Reserved</div>
+            </div>
+            <div class="w-full md:w-1/3 text-center mx-auto pb-8 md:pb-0">
+              <a class="" target="_blank" href="https://madebypioneer.com">
+              <img class="flex flex-wrap mx-auto text-center" src="https://inside.bullochacademy.com/wp-content/uploads/2021/09/pioneer.png" width="60px" height="30px" onmouseover="hover(this);" onmouseout="unhover(this);">
+              </a>
+            </div>
+            <div class="w-full md:w-1/3 sm:ml-auto text-center md:text-right pb-8 md:pb-0">
+              <div class="w-full mx-auto">
+                <a href="/privacy-policy/" class="pr-5">
+                  <u>Privacy Policy</u>
+                </a>
+                <a href="/non-discrimination-policy/">
+                    <u>Non-Discrimination Policy</u>
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+</footer>

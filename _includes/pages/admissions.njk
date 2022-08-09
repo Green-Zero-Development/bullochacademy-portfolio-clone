@@ -1,0 +1,15 @@
+{% include "global/top-hero-section.njk" %}
+
+<div class="flex flex-wrap justify-evenly w-full max-w-8xl mx-auto py-24">
+    {% for item in wpage.childrenPages %}
+        <a href="{{ item.slug }}" class="mb-8 mx-4">
+            <h3 class="h-full text-white p-6 bg-green-500 hover:bg-green-200 child-page-square">{{ item.title }}</h3>
+        </a>
+    {% endfor %}
+</div>
+
+{% include "global/gator-text-cta.njk" %}
+
+{% include "global/instagram-section.njk" %}
+
+{% include "global/pre-footer-cta.njk" %}

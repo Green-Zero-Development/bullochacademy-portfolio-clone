@@ -1,0 +1,65 @@
+{% include "global/top-hero-section.njk" %}
+
+<div class="flex flex-wrap justify-evenly w-full max-w-8xl mx-auto py-24">
+    {% for item in wpage.childrenPages | sort(false, false, 'id') %}
+        {% if item.parent == "Academics" %}
+            <style>
+                .child-page-square-{{ item.id }} {
+                    background-image: url('{{ item.page_image }}');
+                }
+            </style>
+            <div class="relative mb-8 mx-4 child-page-square-container">
+                <div class="relative bg-cover bg-center overflow-y-scroll child-page-half-square child-page-square-{{ item.id }}">
+                    <div class="absolute top-0 left-0 w-full h-full z-10 child-page-half-square-gradient"></div>
+                    <h3 class="absolute bottom-0 left-0 right-0 w-11/12 text-2xl md:text-h3-init text-white mx-auto pb-6 leading-none z-50 child-page-half-title">{{ item.title }}</h3>
+                    <div class="hide-child-child-menu absolute left-0 right-0 flex flex-wrap w-11/12 mx-auto text-white font-bold pb-12 list-none child-child-page-list z-20">
+                        <ul class="w-full sm:w-1/2 px-2 list-none">
+                            <a href="{{ item.slug }}" class="child-child-link">
+                                <li class="pb-2">Go to this page</li>
+                            </a>
+                            {% set childChildLoop = 0 %}
+                            {% for item2 in wpage.childrenPages %}
+                                {% if item2.parent == item.title %}
+                                {% set childChildLoop = childChildLoop + 1 %}
+                                    {% if childChildLoop <= 3 %}
+                                        <a href="{{ item2.slug }}" class="child-child-link">
+                                            <li class="pb-2">{{ item2.title }}</li>
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <ul class="w-full sm:w-1/2 px-2 list-none">
+                            {% set childChildLoop = 0 %}
+                            {% for item2 in wpage.childrenPages %}
+                                {% if item2.parent == item.title %}
+                                {% set childChildLoop = childChildLoop + 1 %}
+                                    {% if childChildLoop > 3 %}
+                                        <a href="{{ item2.slug }}" class="child-child-link">
+                                            <li class="pb-2">{{ item2.title }}</li>
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% include "global/pre-footer-cta.njk" %}
+
+<script>
+let childPageMenuToggles = document.querySelectorAll('.child-page-half-square');
+
+for (var i = 0; i < childPageMenuToggles.length; i++) {
+    childPageMenuToggles[i].addEventListener("mouseover", function(e) {
+        setTimeout(function(){ e.target.parentElement.querySelector('.child-child-page-list').classList.remove('hide-child-child-menu') }, 10);
+    });
+    childPageMenuToggles[i].addEventListener("mouseleave", function(e) {
+        e.target.parentElement.querySelector('.child-child-page-list').classList.add('hide-child-child-menu');
+    });
+}
+</script>

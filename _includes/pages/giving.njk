@@ -1,0 +1,89 @@
+{% include "global/top-hero-section.njk" %}
+
+<style>
+    .image-section-img-{{ wpage.imageSection1.image.id }} {
+        background-image: url({{ wpage.imageSection1.image.url }});
+        border-radius: 6px;
+    }
+</style>
+<div class="flex flex-wrap items-start lg:items-center max-w-8xl mx-auto pt-16 pb-16 px-2 sm:px-6 md:px-12">
+    <div class="w-full md:w-7/12 bg-cover bg-center w-full md:w-1/2 py-40 md:py-32 lg:py-56 mb-12 md:mb-0 image-section-img-{{ wpage.imageSection1.image.id }}" aria-label="{{ wpage.imageSection1.image.alt }}">
+
+    </div>
+    <div class="w-full md:w-5/12 md:pl-8 lg:pl-16">
+        <h2 class="pb-3 leading-none">{{ wpage.imageSection1.title }}</h2>
+        <p>{{ wpage.imageSection1.paragraph }}</p>
+        <a {% if wpage.imageSection1.button_1.link_to_where == "A page on this site" %}href='{{ wpage.imageSection1.button_1.link }}'{% elseif wpage.imageSection1.button_1.link_to_where == "Another site" %}href='{{ wpage.imageSection2.button_1.link_offsite }}' target='_blank'{% endif %} class="mr-12">
+            <button class="mt-3 arrow-button">{{ wpage.imageSection2.button_1.text }}</button>
+        </a>
+        <a {% if wpage.imageSection1.button_2.link_to_where == "A page on this site" %}href='{{ wpage.imageSection1.button_2.link }}'{% elseif wpage.imageSection1.button_2.link_to_where == "Another site" %}href='{{ wpage.imageSection1.button_2.link_offsite }}' target='_blank'{% endif %}>
+            <button class="mt-3 arrow-button">{{ wpage.imageSection1.button_2.text }}</button>
+        </a>
+    </div>
+</div>
+
+<style>
+    .gator-cta-text-bk {
+        background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/Mask-Group.png');
+    }
+</style>
+
+<div class="relative bg-gold-50 gator-cta">
+    <div class="w-full h-full bg-cover xxxl:bg-contain bg-center bg-no-repeat py-20 px-2 sm:px-6 md:px-10 lg:px-16 gator-cta-text-bk">
+        <div class="">
+            <div class="text-center px-6">
+                <h2 class="text-3xl lg:text-h2-init pb-2 leading-none">{{ wpage.gatorTextSection.title }}</h2>
+                <p class="max-w-3xl text-base lg:text-p-init mx-auto pb-6">{{ wpage.gatorTextSection.paragraph }}</p>
+                <a {% if wpage.gatorTextSection.outline_button.link_to_where == "A page on this site" %}href='{{ wpage.gatorTextSection.outline_button.link }}'{% elseif wpage.gatorTextSection.outline_button.link_to_where == "Another site" %}href='{{ wpage.gatorTextSection.outline_button.link_offsite }}' target='_blank'{% endif %}>
+                    <button class="mb-6 sm:mr-6 outline-button">{{ wpage.gatorTextSection.outline_button.text }}</button>
+                </a>
+                <a {% if wpage.gatorTextSection.filled_button.link_to_where == "A page on this site" %}href='{{ wpage.gatorTextSection.filled_button.link }}'{% elseif wpage.gatorTextSection.filled_button.link_to_where == "Another site" %}href='{{ wpage.gatorTextSection.filled_button.link_offsite }}' target='_blank'{% endif %}>
+                    <button class="green-button">{{ wpage.gatorTextSection.filled_button.text }}</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .image-section-2-img-{{ wpage.imageSection2.image.id }} {
+        background-image: url({{ wpage.imageSection2.image.url }});
+        border-radius: 6px;
+    }
+</style>
+<div class="flex flex-wrap items-start lg:items-center flex-col-reverse md:flex-row max-w-8xl mx-auto pt-16 pb-16 px-2 sm:px-6 md:px-12">
+    <div class="w-full md:w-5/12 md:pr-8 lg:pr-16">
+        <h2 class="pb-3 leading-none">{{ wpage.imageSection2.title }}</h2>
+        <p>{{ wpage.imageSection2.paragraph }}</p>
+        <a {% if wpage.imageSection2.button_1.link_to_where == "A page on this site" %}href='{{ wpage.imageSection2.button_1.link }}'{% elseif wpage.imageSection2.button_1.link_to_where == "Another site" %}href='{{ wpage.imageSection2.button_1.link_offsite }}' target='_blank'{% endif %} class="mr-12">
+            <button class="mt-3 arrow-button">{{ wpage.imageSection2.button_1.text }}</button>
+        </a>
+        <a {% if wpage.imageSection2.button_2.link_to_where == "A page on this site" %}href='{{ wpage.imageSection2.button_2.link }}'{% elseif wpage.imageSection2.button_2.link_to_where == "Another site" %}href='{{ wpage.imageSection2.button_2.link_offsite }}' target='_blank'{% endif %}>
+            <button class="mt-3 arrow-button">{{ wpage.imageSection2.button_2.text }}</button>
+        </a>
+    </div>
+    <div class="w-full md:w-7/12 bg-cover bg-center w-full md:w-1/2 py-40 md:py-32 lg:py-56 mb-12 md:mb-0 image-section-2-img-{{ wpage.imageSection2.image.id }}" aria-label="{{ wpage.imageSection2.image.alt }}">
+
+    </div>
+</div>
+
+<style>
+    .image-section-3-img-{{ wpage.imageSection3.image.id }} {
+        background-image: url({{ wpage.imageSection3.image.url }});
+        border-radius: 6px;
+    }
+</style>
+<div class="flex flex-wrap items-start lg:items-center max-w-8xl mx-auto pt-16 pb-16 px-2 sm:px-6 md:px-12">
+    <div class="w-full md:w-7/12 bg-cover bg-center w-full md:w-1/2 py-40 md:py-32 lg:py-56 mb-12 md:mb-0 image-section-3-img-{{ wpage.imageSection3.image.id }}" aria-label="{{ wpage.imageSection3.image.alt }}">
+
+    </div>
+    <div class="w-full md:w-5/12 md:pl-8 lg:pl-16">
+        <h2 class="pb-3 leading-none">{{ wpage.imageSection3.title }}</h2>
+        <p>{{ wpage.imageSection3.paragraph }}</p>
+        <a {% if wpage.imageSection3.button.link_to_where == "A page on this site" %}href='{{ wpage.imageSection3.button.link }}'{% elseif wpage.imageSection3.button.link_to_where == "Another site" %}href='{{ wpage.imageSection3.button.link_offsite }}' target='_blank'{% endif %}>
+            <button class="mt-3 arrow-button">{{ wpage.imageSection3.button.text }}</button>
+        </a>
+    </div>
+</div>
+
+{% include "global/pre-footer-cta.njk" %}

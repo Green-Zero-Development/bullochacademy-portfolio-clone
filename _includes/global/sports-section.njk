@@ -1,0 +1,204 @@
+<style>
+.sports-listing-title-list {
+    max-height: 450px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.sports-listing-title-list::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.sports-listing-title-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px #b9b37f;
+}
+ 
+.sports-listing-title-list::-webkit-scrollbar-thumb {
+  background-color: #b9b37f;
+  outline: 1px solid #b9b37f;
+}
+
+.sports-listing-item {
+  
+}
+
+.active-sports-listing-item {
+    background-color: #175b43;
+    color: white;
+    border-left: 15px solid #B9B37F;
+    transition: .25s;
+}
+
+.active-sports-listing-item .arrow-button {
+    color: white;
+}
+
+.sports-trig {
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: .25s;
+}
+
+.sports-trig:hover {
+    color: #218461;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.active-sports-trig {
+    border-bottom: 1px solid #B0A96F;
+    margin-bottom: -1px;
+}
+</style>
+
+<div class="max-w-8xl mx-auto px-2 sm:px-6 md:px-12">
+    <div class="md:flex items-center max-w-8xl mx-auto pt-24 pb-6 pr-8 lg:pr-12">
+        <h2 class="pb-2 leading-none">Teams & Programs</h2>
+        <h6 id="fall-sports-trig" class="active-sports-trig w-56 lg:w-auto text-lg md:text-xs pt-5 md:pt-0 md:mx-2 lg:mx-6 sports-trig">Fall Sports</h6>
+        <h6 id="winter-sports-trig" class="w-56 lg:w-auto text-lg md:text-xs pt-5 md:pt-0 md:mx-2 lg:mx-6 sports-trig">Winter Sports</h6>
+        <h6 id="spring-sports-trig" class="w-56 lg:w-auto text-lg md:text-xs pt-5 md:pt-0 md:mx-2 lg:mx-6 sports-trig">Spring Sports</h6>
+    </div>
+    <style>
+        {% for item in sports %}
+            .{{ item.slug }} {
+                {% if item.listingPageImg %}
+                background-image: url('{{ item.listingPageImg.url }}');
+                {% else %}
+                background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/athletics-hero.jpg');
+                {% endif %}
+            }
+        {% endfor %}
+    </style>
+    <div class="flex flex-wrap">
+        <div id="sports-listing-image" class="sports-listing-image">
+
+        </div>
+        <div class="flex flex-wrap md:block w-full md:w-1/2 mt-6 pb-24 sports-listing-title-list">
+            <div id="fall-sports-list" class="w-full sports-list">
+                {% for item in sports %}
+                    {% if item.disabled !== 'Yes' %}
+                    {% for item2 in item.sportSeasons %}
+                        {% if item2==='Fall' %}
+                            <div class="w-full mb-8 py-8 px-3 md:px-6 lg:px-12 sports-listing-item">
+                                <a href="{{ item.slug }}">
+                                    <div id="slug-for-img" class="hidden pointer-events-none">{{ item.slug }}</div>
+                                    <h2 class="text-2xl lg:text-3xl pb-2 leading-none pointer-events-none">{{ item.title | safe }}</h2>
+                                    <p class="text-sm lg:text-base pb-6 pointer-events-none">{{ item.excerpt | truncate(80, true, "...") }}</p>
+                                    <button class="arrow-button pointer-events-none">Learn More</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="winter-sports-list" class="hidden w-full sports-list">
+                {% for item in sports %}
+                    {% if item.disabled !== 'Yes' %}
+                    {% for item2 in item.sportSeasons %}
+                        {% if item2==='Winter' %}
+                            <div class="w-full mb-8 py-8 px-3 md:px-6 lg:px-12 sports-listing-item">
+                                <a href="{{ item.slug }}">
+                                    <div id="slug-for-img" class="hidden pointer-events-none">{{ item.slug }}</div>
+                                    <h2 class="text-2xl lg:text-3xl pb-2 leading-none pointer-events-none">{{ item.title | safe }}</h2>
+                                    <p class="text-sm lg:text-base pb-6 pointer-events-none">{{ item.excerpt | truncate(80, true, "...") }}</p>
+                                    <button class="arrow-button pointer-events-none">Learn More</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div id="spring-sports-list" class="hidden w-full sports-list">
+                {% for item in sports %}
+                    {% if item.disabled !== 'Yes' %}
+                    {% for item2 in item.sportSeasons %}
+                        {% if item2==='Spring' %}
+                            <div class="w-full mb-8 py-8 px-3 md:px-6 lg:px-12 sports-listing-item">
+                                <a href="{{ item.slug }}">
+                                    <div id="slug-for-img" class="hidden pointer-events-none">{{ item.slug }}</div>
+                                    <h2 class="text-2xl lg:text-3xl pb-2 leading-none pointer-events-none">{{ item.title | safe }}</h2>
+                                    <p class="text-sm lg:text-base pb-6 pointer-events-none">{{ item.excerpt | truncate(80, true, "...") }}</p>
+                                    <button class="arrow-button pointer-events-none">Learn More</button>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="w-full md:w-1/2 ml-auto h-40 pointer-events-none sports-listing-gradient"></div>
+    </div>
+</div>
+
+<script>
+let newsListingImg = document.getElementById('sports-listing-image');
+let newsListingItems = document.querySelectorAll('.sports-listing-item');
+let activeNewsListing = document.getElementById('active-sports-listing-item');
+document.addEventListener("DOMContentLoaded", function(e) {
+    for (let i = 0; i < newsListingItems.length; i++) {
+        var initialNewsImg = newsListingItems[0].querySelector('#slug-for-img').innerText
+        newsListingImg.classList.add(initialNewsImg);
+    }
+});
+for (let i = 0; i < newsListingItems.length; i++) {
+    newsListingItems[i].addEventListener("mouseover", function(e) {
+        newsListingImg.setAttribute('class', '');
+        var currentNewsImg = e.target.querySelector('#slug-for-img').innerText;
+        newsListingImg.classList.add('sports-listing-image', currentNewsImg);
+    });
+}
+for (let i = 0; i < newsListingItems.length; i++) {
+    newsListingItems[i].addEventListener("mouseover", function(e) {
+        for (let i2 = 0; i2 < newsListingItems.length; i2++) {
+            newsListingItems[i2].classList.remove('active-sports-listing-item');
+        }
+        newsListingItems[i].classList.add('active-sports-listing-item');
+    });
+}
+
+let sportLists = document.querySelectorAll('.sports-list');
+let sportsTrigs = document.querySelectorAll('.sports-trig');
+let fallSportsTrig = document.getElementById('fall-sports-trig');
+let fallSportsList = document.getElementById('fall-sports-list');
+let winterSportsTrig = document.getElementById('winter-sports-trig');
+let winterSportsList = document.getElementById('winter-sports-list');
+let springSportsTrig = document.getElementById('spring-sports-trig');
+let springSportsList = document.getElementById('spring-sports-list');
+
+fallSportsTrig.addEventListener("click", function(e) {
+    for (let i = 0; i < sportsTrigs.length; i++) {
+        sportsTrigs[i].classList.remove('active-sports-trig');
+    }
+    for (let i = 0; i < sportLists.length; i++) {
+        sportLists[i].classList.add('hidden');
+    }
+    e.target.classList.add('active-sports-trig');
+    fallSportsList.classList.remove('hidden');
+});
+
+winterSportsTrig.addEventListener("click", function(e) {
+    for (let i = 0; i < sportsTrigs.length; i++) {
+        sportsTrigs[i].classList.remove('active-sports-trig');
+    }
+    for (let i = 0; i < sportLists.length; i++) {
+        sportLists[i].classList.add('hidden');
+    }
+    e.target.classList.add('active-sports-trig');
+    winterSportsList.classList.remove('hidden');
+});
+
+springSportsTrig.addEventListener("click", function(e) {
+    for (let i = 0; i < sportsTrigs.length; i++) {
+        sportsTrigs[i].classList.remove('active-sports-trig');
+    }
+    for (let i = 0; i < sportLists.length; i++) {
+        sportLists[i].classList.add('hidden');
+    }
+    e.target.classList.add('active-sports-trig');
+    springSportsList.classList.remove('hidden');
+});
+</script>

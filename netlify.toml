@@ -1,0 +1,215 @@
+[build]
+  publish = "_site"
+  command = "eleventy"
+
+[[redirects]]
+  from = "https://bullochacademy.netlify.app/*"
+  to = "https://www.bullochacademy.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/about/employment/"
+  to = "https://www.bullochacademy.com/careers/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/about/faculty-and-staff/"
+  to = "https://www.bullochacademy.com/about/faculty-staff/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/about/letter-from-the-headmaster/"
+  to = "https://www.bullochacademy.com/about/letter-from-headmaster/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/about/what-sets-us-apart/"
+  to = "https://www.bullochacademy.com/about/why-ba/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/academics/upper-school/"
+  to = "https://www.bullochacademy.com/academics/high-school/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/academics/upper-school/freshmen/"
+  to = "https://www.bullochacademy.com/academics/high-school/freshman-specifics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/academics/upper-school/sophomores/"
+  to = "https://www.bullochacademy.com/academics/high-school/sophomore-specifics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/academics/upper-school/juniors/"
+  to = "https://www.bullochacademy.com/academics/high-school/junior-specifics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/academics/upper-school/seniors/"
+  to = "https://www.bullochacademy.com/academics/high-school/senior-specifics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/admissions/admission-applications/"
+  to = "https://www.bullochacademy.com/admissions/application-forms/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/admissions/goal-scholarship/"
+  to = "https://www.bullochacademy.com/admissions/scholarships/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/alumni/ba-alumni-roster/"
+  to = "https://www.bullochacademy.com/alumni/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/alumni/hall-of-fame/"
+  to = "https://www.bullochacademy.com/alumni/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/athletics/athletic-handbook/"
+  to = "https://www.bullochacademy.com/athletics/general-athletics-forms/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/athletics/ba-booster-membership/"
+  to = "https://www.bullochacademy.com/athletics/ba-boosters/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/ba-gives/"
+  to = "https://www.bullochacademy.com/giving/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/event-calendar/"
+  to = "https://www.bullochacademy.com/school-news/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/request-a-campus-tour/"
+  to = "https://www.bullochacademy.com/schedule-a-campus-tour/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/students/2021-summer-camps/"
+  to = "https://www.bullochacademy.com/students/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/students/2021-summer-math-reading/"
+  to = "https://www.bullochacademy.com/academics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/students/activities-and-clubs/"
+  to = "https://www.bullochacademy.com/academics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/students/ar-start-testing-log-in/"
+  to = "https://www.bullochacademy.com/academics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/students/school-supply-list/"
+  to = "https://www.bullochacademy.com/academics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/students/student-handbook/"
+  to = "https://www.bullochacademy.com/academics/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/support/"
+  to = "https://www.bullochacademy.com/parents/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/support/future-plan/"
+  to = "https://www.bullochacademy.com/giving/cornerstone-campaign/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/support/parents/"
+  to = "https://www.bullochacademy.com/parents/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/support/parents/pay-online/"
+  to = "https://www.bullochacademy.com/parents/pay-online/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/support/parents/pta/"
+  to = "https://www.bullochacademy.com/parents/pta/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/support/technology-resources/"
+  to = "https://www.bullochacademy.com/academics/technology-resources/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/charleston-wrap/"
+  to = "https://www.bullochacademy.com/school-news/charleston-wrap/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/open-house-2021/"
+  to = "https://www.bullochacademy.com/school-news/open-house-2021/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.bullochacademy.com/back-to-school-immunization-requirements/"
+  to = "https://www.bullochacademy.com/school-news/back-to-school-immunization-requirements/"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"

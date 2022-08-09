@@ -1,0 +1,220 @@
+<div class="relative flex flex-wrap max-w-8xl mx-auto">
+    <style>
+        .desktop-hero-img {
+            {% if wpage.heroVideo %}
+            background-image: none;
+            top: 115px;
+            {% elif (wpage.heroImg) or (sportsSing.heroImg) %}
+            background-image: url('{{ wpage.heroImg }}{{ sportsSing.heroImg }}');
+            height: 330px;
+            {% else %}
+            background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/academics-hero-img.jpg');
+            height: 330px;
+            {% endif %}
+            width: 93%;
+            border-radius: 6px;
+        }
+
+        .mobile-hero-img {
+            {% if (wpage.heroImg) or (sportsSing.heroImg) %}
+            background-image: url('{{ wpage.heroImg }}{{ sportsSing.heroImg }}');
+            {% else %}
+            background-image: url('https://inside.bullochacademy.com/wp-content/uploads/2021/09/academics-hero-img.jpg');
+            {% endif %}
+            width: 100%;
+            height: 200px;
+        }
+    </style>
+    <div class="lg:hidden w-full bg-cover bg-center mobile-hero-img">
+
+    </div>
+    <div class="w-full md:w-2/3 lg:w-7/12 xl:w-2/3 pl-4 lg:pl-12 pr-4 lg:pr-0">
+        <div id="hero-title-box" class="mt-8 mb-6">
+            <h6 class="text-sm text-green-200 uppercase tracking-widest">{{ wpage.title | safe }}{{ sportsSing.title | safe }}</h6>
+            <h1 class="text-4xl md:text-h1-init leading-none">{{ wpage.heroTitle }}{{ sportsSing.heroTitle }}</h1>
+        </div>
+        <div class="lg:hidden my-8 mobile-buttons-box">
+            {% if (wpage.heroOutlineButton.text) or (sportsSing.heroOutlineButton.text) %}
+            <a 
+            {% if wpage.heroOutlineButton.link_to_where == "A page on this site" %}
+            href='{{ wpage.heroOutlineButton.link }}'
+            {% elseif wpage.heroOutlineButton.link_to_where == "Another site" %}
+            href='{{ wpage.heroOutlineButton.link_offsite }}' target='_blank'
+            {% elseif wpage.heroOutlineButton.link_to_where == "A document" %}
+            href='{{ wpage.heroOutlineButton.link_document.url }}' target='_blank'
+            {% endif %}
+            {% if sportsSing.heroOutlineButton.link_to_where == "A page on this site" %}
+            href='{{ sportsSing.heroOutlineButton.link }}'
+            {% elseif sportsSing.heroOutlineButton.link_to_where == "Another site" %}
+            href='{{ sportsSing.heroOutlineButton.link_offsite }}'
+            target='_blank'
+            {% endif %}
+            >
+                <button class="mb-4 mr-6 outline-button">{{ wpage.heroOutlineButton.text }}{{ sportsSing.heroOutlineButton.text }}</button>
+            </a>
+            {% endif %}
+            {% if (wpage.heroFilledButton.text) or (sportsSing.heroFilledButton.text) %}
+            <a 
+            {% if wpage.heroFilledButton.link_to_where == "A page on this site" %}
+            href='{{ wpage.heroFilledButton.link }}'
+            {% elseif wpage.heroFilledButton.link_to_where == "Another site" %}
+            href='{{ wpage.heroFilledButton.link_offsite }}' target='_blank' 
+            {% elseif wpage.heroFilledButton.link_to_where == "A document" %}
+            href='{{ wpage.heroFilledButton.link_document.url }}' target='_blank'
+            {% endif %} 
+            {% if sportsSing.heroFilledButton.link_to_where == "A page on this site" %}
+            href='{{ sportsSing.heroFilledButton.link }}'
+            {% elseif sportsSing.heroFilledButton.link_to_where == "Another site" %}
+            href='{{ sportsSing.heroFilledButton.link_offsite }}' 
+            target='_blank'
+            {% endif %}
+            >
+                <button class="green-button">{{ wpage.heroFilledButton.text }}{{ sportsSing.heroFilledButton.text }}</button>
+            </a>
+            {% endif %}
+        </div>
+        {% if wpage.heroVideo %}
+            <video class="hidden lg:block absolute left-0 w-full bg-cover bg-center ml-12 desktop-hero-img" autoplay loop width="100%">
+            <source src="{{ wpage.heroVideo.url }}"
+                    type="video/mp4">
+            Sorry, your browser doesn't support embedded videos.
+            </video>
+
+            {% else %}
+
+            <div class="hidden lg:block absolute left-0 w-full bg-cover bg-center ml-12 desktop-hero-img">
+            
+            </div>
+
+        {% endif %}
+        {% if (wpage.underHeroContentSwitch == 'Yes') or (sportsSing.underHeroContentSwitch == 'Yes') %}
+        {% if wpage.slug == "contact" %}
+        <div class="max-w-xl xl:max-w-2xl pb-12 md:pb-24 lg:pl-16 pr-4 md:pr-16 lg:pr-32 after-hero-white-bk-content">
+            <h2 class="text-2xl leading-tight pb-4"><i>{{ wpage.underHeroTitle }}{{ sportsSing.underHeroContent.title }}</i></h2>
+            <div class="wysiwig-block">{{ wpage.formsList.title }}</div>
+            <ul class="flex flex-wrap text-green-200 pt-2 pb-8">
+                <div class="w-full md:w-1/2">
+                    {% for item in wpage.formsList.form_links %}
+                        {% if loop.index <= 2 %}
+                            <li>
+                                <a href="{{ item.form_link.link }}" >
+                                    {{ item.form_link.text }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="w-full md:w-1/2">
+                    {% for item in wpage.formsList.form_links %}
+                        {% if loop.index > 2 %}
+                            <li>
+                                <a href="{{ item.form_link.link }}" >
+                                    {{ item.form_link.text }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </ul>
+        </div>
+        {% else %}
+        <div class="max-w-xl xl:max-w-2xl pb-12 md:pb-24 lg:pl-16 pr-4 md:pr-16 lg:pr-32 after-hero-white-bk-content">
+            <h2 class="text-2xl leading-tight pb-4"><i>{{ wpage.underHeroTitle }}{{ sportsSing.underHeroContent.title }}</i></h2>
+            <div class="wysiwig-block">{{ wpage.underHeroParagraph | safe }}</div>
+            {% if wpage.underHeroButton.text %}
+            <a {% if wpage.underHeroButton.link_to_where == "A page on this site" %}href='{{ wpage.underHeroButton.link }}'{% elseif wpage.underHeroButton.link_to_where == "Another site" %}href='{{ wpage.underHeroButton.link_offsite }}' target='_blank'{% endif %}>
+                <button class="arrow-button">{{ wpage.underHeroButton.text }}</button>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+    <div class="w-full md:w-1/3 lg:w-5/12 xl:w-1/3 {% if wpage.underHeroContentSwitch == 'Yes' %}bg-gold-50{% endif %} lg:pr-12">
+        <div id="hero-button-box" class="hidden lg:flex items-end justify-end my-8">
+            {% if (wpage.heroOutlineButton.text) or (sportsSing.heroOutlineButton.text) %}
+            <a 
+            {% if wpage.heroOutlineButton.link_to_where == "A page on this site" %}
+            href='{{ wpage.heroOutlineButton.link }}'
+            {% elseif wpage.heroOutlineButton.link_to_where == "Another site" %}
+            href='{{ wpage.heroOutlineButton.link_offsite }}' target='_blank' 
+            {% elseif wpage.heroOutlineButton.link_to_where == "A document" %}
+            href='{{ wpage.heroOutlineButton.link_document.url }}' target='_blank'
+            {% endif %} 
+            {% if sportsSing.heroOutlineButton.link_to_where == "A page on this site" %}
+            href='{{ sportsSing.heroOutlineButton.link }}' 
+            {% elseif sportsSing.heroOutlineButton.link_to_where == "Another site" %}
+            href='{{ sportsSing.heroOutlineButton.link_offsite }}' target='_blank'
+            {% endif %}
+            >
+                <button class="mr-6 outline-button">{{ wpage.heroOutlineButton.text }}{{ sportsSing.heroOutlineButton.text }}</button>
+            </a>
+            {% endif %}
+            {% if (wpage.heroFilledButton.text) or (sportsSing.heroFilledButton.text) %}
+            <a {% if wpage.heroFilledButton.link_to_where == "A page on this site" %}
+            href='{{ wpage.heroFilledButton.link }}'
+            {% elseif wpage.heroFilledButton.link_to_where == "Another site" %}
+            href='{{ wpage.heroFilledButton.link_offsite }}' target='_blank'
+            {% elseif wpage.heroFilledButton.link_to_where == "A document" %}
+            href='{{ wpage.heroFilledButton.link_document.url }}' target='_blank'
+            {% endif %} 
+            {% if sportsSing.heroFilledButton.link_to_where == "A page on this site" %}
+            href='{{ sportsSing.heroFilledButton.link }}'
+            {% elseif sportsSing.heroFilledButton.link_to_where == "Another site" %}
+            href='{{ sportsSing.heroFilledButton.link_offsite }}' target='_blank'
+            {% endif %}
+            >
+                <button class="green-button">{{ wpage.heroFilledButton.text }}{{ sportsSing.heroFilledButton.text }}</button>
+            </a>
+            {% endif %}
+        </div>
+        <div class="text-center px-4 mt-10 after-hero-gold-bk-content">
+            {% if wpage.underHeroContentSwitch == 'Yes' %}
+                {% if wpage.underHeroFigures %}
+                    {% for item in wpage.underHeroFigures %}
+                        <div class="pb-12">
+                            <h5 class="text-3xl lg:text-5xl pb-4"><i>{{ item.number }}</i></h5>
+                            <p class="max-w-sm text-base lg:text-xl font-bold mx-auto">{{ item.explanation }}</p>
+                        </div>
+                    {% endfor %}
+                {% elseif (wpage.slug == "contact") or (wpage.slug == "schedule-a-campus-tour") %}
+                    <div class="flex text-left mx-auto pt-0 pb-8">
+                        <img class="w-8 h-8 mx-3 lg:mx-6" src="https://inside.bullochacademy.com/wp-content/uploads/2021/10/green-pin.png" />
+                        <h5 class="w-full">{% for item in global.siteAddresses[0].acf.value_list %}{% if item.type == 'Main Campus' %}{{ item.street }}
+                            <br />
+                            {{ item.city }}, {{ item.state }} {{ item.zip }}
+                            {% endif %}{% endfor %}</h5>
+                    </div>
+                    <div class="flex text-left mx-auto pb-8">
+                        <div class="w-8 h-8 mx-3 lg:mx-6"></div>
+                        <h5 class="w-full">Office Hours:
+                            <br />
+                            Mon-Fri: 8am-3pm</h5>
+                    </div>
+                    <div class="flex text-left mx-auto pb-8">
+                        <img class="w-6 h-6 mx-3 lg:mx-6" src="https://inside.bullochacademy.com/wp-content/uploads/2021/10/green-phone.png" />
+                        <a class="w-full" href='{% for item in global.sitePhone[0].acf.value_list %}{% if item.type == "Primary" %}tel:{{ item.value }}{% endif %}{% endfor %}'>
+                            <h5>{% for item in global.sitePhone[0].acf.value_list %}{% if item.type == "Primary" %}{{ item.value }}{% endif %}{% endfor %}</h5>
+                        </a>
+                    </div>
+                {% elseif wpage.pageLinks %}
+                <ul class="flex flex-wrap text-xl text-green-500 font-bold text-left">
+                    {% for item in wpage.pageLinks %}
+                    <a {% if item.link_to_where == "A page on this site" %}href='{{ item.link }}'{% elseif item.link_to_where == "Another site" %}href='{{ item.link_offsite }}' target='_blank'{% endif %} class="w-full md:w-5/6 mt-6 xl:mt-0 xl:mb-6 mx-auto">
+                        {{ item.text }}
+                    </a>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+let heroTitleBox = document.getElementById('hero-title-box');
+let heroButtonBox = document.getElementById('hero-button-box');
+let heroTitleBoxHeight = heroTitleBox.offsetHeight;
+heroButtonBox.style.cssText = `height:` + heroTitleBoxHeight + `px`;
+</script>

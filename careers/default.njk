@@ -1,0 +1,10 @@
+---
+layout: careers-single.njk
+pagination:
+    data: careers
+    size: 1
+    alias: careerSing
+eleventyComputed:
+  yoastHead: "{{ careerSing.yoast|safe }}"
+permalink: /careers/{{ careerSing.slug }}/index.html
+---

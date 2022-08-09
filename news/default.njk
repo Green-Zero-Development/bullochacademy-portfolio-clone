@@ -1,0 +1,10 @@
+---
+layout: news-single.njk
+pagination:
+    data: news
+    size: 1
+    alias: newsSing
+eleventyComputed:
+  yoastHead: "{{ newsSing.yoast|safe }}"
+permalink: /school-news/{{ newsSing.slug }}/index.html
+---

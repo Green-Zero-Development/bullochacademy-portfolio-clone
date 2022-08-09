@@ -1,0 +1,29 @@
+{% include "global/top-hero-section.njk" %}
+
+<div class="max-w-8xl mx-auto py-24 px-4 lg:px-32">
+    {% for item in careers %}
+        {% if item.disabled !== "Yes" %}
+            <div class="md:flex justify-between">
+                <h5 class="max-w-md pb-4">{{ item.jobTitle }}, {{ item.gradeLevel }}</h5>
+                <div class="flex pb-4">
+                    <a class="" href="{{ item.slug }}">
+                        <button class="mr-6 outline-button">Learn More</button>
+                    </a>
+                    <a class="" href="/apply-for-career/">
+                        <button class="gold-button">Apply</button>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="md:flex justify-between pt-12">
+        <h5 class="max-w-md pb-4">Substitutes</h5>
+        <div class="flex pb-4">
+            <a class="" href="https://inside.bullochacademy.com/wp-content/uploads/2022/06/Classified_Application-6.2022.pdf" target="_blank">
+                <button class="gold-button">Download Application</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% include "global/pre-footer-cta.njk" %}
